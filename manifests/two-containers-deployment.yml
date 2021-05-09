@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: project2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project1-app
+  template:
+    metadata:
+      labels:
+        app: project1-app
+    spec:
+      containers:
+      - name: container-1
+        image: nginx
+        ports:
+        - containerPort: 80
+      - name: container-2
+        image: nginx
+        ports:
+        - containerPort: 8080
